@@ -6,6 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
+source /usr/share/git-core/contrib/completion/git-prompt.sh
 
 export RAILS_RELATIVE_URL_ROOT=/katello
 
