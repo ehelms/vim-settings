@@ -8,8 +8,6 @@ fi
 # User specific aliases and functions
 source /usr/share/git-core/contrib/completion/git-prompt.sh
 
-export RAILS_RELATIVE_URL_ROOT=/katello
-
 export PS1='\u@\h \W$(__git_ps1 " (%s)") \$ '
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
