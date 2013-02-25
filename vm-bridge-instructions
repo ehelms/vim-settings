@@ -1,0 +1,90 @@
+update : /etc/sysconfig/network-scripts/ifcfg-em1
+-------------------------------------------------
+
+example:
+
+DEVICE="em1"
+HWADDR="00:23:AE:79:43:4F"
+ONBOOT="yes"
+BRIDGE=br0
+NM_CONTROLLED="no"
+MTU=9000
+
+create :  /etc/sysconfig/network-scripts/ifcfg-br0
+-------------------------------------------------
+
+example:
+
+DEVICE=br0
+TYPE=Bridge
+BOOTPROTO=dhcp
+ONBOOT=yes
+DELAY=0
+NM_CONTROLLED=no
+
+turn off NetworkManager:
+-------------------------------------------------
+service NetworkManager stop
+chkconfig NetworkManager off
+
+turn on network:
+-------------------------------------------------
+chkconfig network on
+
+reboot
+
+... hopefully all is well... 
+
+e.g.  (after bridge is set up....)
+
+ifconfig -a
+br0       Link encap:Ethernet  HWaddr BC:30:5B:A6:D5:B4  
+          inet addr:10.13.129.201  Bcast:10.13.129.255  Mask:255.255.254.0
+          inet6 addr: 2620:52:0:d80:be30:5bff:fea6:d5b4/64 Scope:Global
+          inet6 addr: fe80::be30:5bff:fea6:d5b4/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:265720 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:117811 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:396068642 (377.7 MiB)  TX bytes:9048054 (8.6 MiB)
+
+em1       Link encap:Ethernet  HWaddr BC:30:5B:A6:D5:B4  
+          inet6 addr: fe80::be30:5bff:fea6:d5b4/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1089968 errors:0 dropped:538 overruns:0 frame:0
+          TX packets:261866 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1358816970 (1.2 GiB)  TX bytes:24387812 (23.2 MiB)
+          Interrupt:17 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:614856 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:614856 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:397719435 (379.2 MiB)  TX bytes:397719435 (379.2 MiB)
+
+virbr0    Link encap:Ethernet  HWaddr 52:54:00:4D:C9:56  
+          inet addr:192.168.122.1  Bcast:192.168.122.255  Mask:255.255.255.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+virbr0-nic Link encap:Ethernet  HWaddr 52:54:00:4D:C9:56  
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
+vnet0     Link encap:Ethernet  HWaddr FE:54:00:6B:52:C6  
+          inet6 addr: fe80::fc54:ff:fe6b:52c6/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:5941 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:17460 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:4722945 (4.5 MiB)  TX bytes:25273817 (24.1 MiB)
