@@ -2,8 +2,9 @@ CURR_DIR=`pwd`
 
 sudo yum install -y ruby-devel git screen vim
 sudo yum groupinstall -y "Development Tools"
-ln -s $CURR_DIR/.rdebugrc ~/.rdebugrc
+rm ~/.bashrc
 ln -s $CURR_DIR/.bashrc ~/.bashrc
+ln -s $CURR_DIR/.rdebugrc ~/.rdebugrc
 ln -s $CURR_DIR/screen/.screenrc ~/.screenrc
 ln -s $CURR_DIR/vim/.vimrc ~/.vimrc
 ln -s $CURR_DIR/vim/.vundle ~/.vundle
