@@ -12,6 +12,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 "Add your bundles here
 Bundle 'othree/javascript-libraries-syntax'
+
+Bundle 'rodjek/vim-puppet'
+
 if iCanHazVundle == 0
 	echo "Installing Bundles, please ignore key map error messages"
 	echo ""
