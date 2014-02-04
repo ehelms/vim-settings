@@ -1,6 +1,6 @@
 CURR_DIR=`pwd`
 
-sudo yum install -y ruby-devel git screen vim
+sudo yum install -y ruby-devel git screen vim postgresql-devel sqlite-devel libvirt-devel
 sudo yum groupinstall -y "Development Tools"
 rm ~/.bashrc
 ln -s $CURR_DIR/.bashrc ~/.bashrc
