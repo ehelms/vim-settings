@@ -8,10 +8,12 @@ fi
 source ./.git-prompt.sh
 
 # User specific aliases and functions
-source /usr/share/git-core/contrib/completion/git-prompt.sh
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+  source /usr/share/git-core/contrib/completion/git-prompt.sh
+fi
 
 YELLOW="\[\033[0;33m\]"
-WHITE="\e[0;97m\]"
+WHITE="\e[0;97m"
 
 PS1="\u@\h \W$YELLOW\$(__git_ps1)$WHITE \$ "
 
