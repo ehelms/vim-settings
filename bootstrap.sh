@@ -14,6 +14,4 @@ ln -s $CURR_DIR/.git-prompt.sh ~/.git-prompt.sh
 vim +BundleInstall +qall
 git config --global user.name "Eric D. Helms"
 git config --global user.email ericdhelms@gmail.com
-mkdir ~/workspace
-\curl -L https://get.rvm.io | bash -s stable --ruby
 source ~/.bashrc
