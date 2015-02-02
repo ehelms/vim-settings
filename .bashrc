@@ -15,7 +15,7 @@ fi
 YELLOW="\[\033[0;33m\]"
 WHITE="\e[0;97m"
 
-PS1="\u@\h \W$YELLOW\$(__git_ps1)$WHITE \$ "
+PS1="\u@\h \W$YELLOW\$(__git_ps1)\[$WHITE\]\$ "
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
