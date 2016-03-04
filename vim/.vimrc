@@ -1,10 +1,5 @@
 set nocompatible               " no vi compatible mode
  
-" using vundle to load all plugins
-if filereadable(expand("~/.vundle"))
-  source ~/.vundle
-endif
-
 colorscheme vibrantink
 
 autocmd BufWritePre  *.{js,rb,scss}  call StripTrailingWhite()
@@ -19,3 +14,11 @@ function! StripTrailingWhite()
 endfunction
 
 set tabpagemax=75
+
+
+" Plug plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'leafgarland/typescript-vim'
+
+call plug#end()

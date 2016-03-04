@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/ehelms/workspace/downstream/satellite-packaging/downstream-packaging/satellite-cli'
+let g:netrw_dirhist_2='/home/ehelms/workspace/katello-packaging/katello-installer'
+let g:netrw_dirhist_3='/home/ehelms/workspace/katello-deploy/docker/clients/centos7'
+let g:netrw_dirhist_4='/home/ehelms/workspace/tool_belt/configs'
+let g:netrw_dirhist_5='/home/ehelms/workspace/downstream/tool_belt/lib/tool_belt'
+let g:netrw_dirhist_6='/home/ehelms/workspace/downstream/sat-dashboard/prprocessor/app'
+let g:netrw_dirhist_7='/home/ehelms/workspace/downstream/ohsnap.git/.openshift/markers'
+let g:netrw_dirhist_8='/home/ehelms/workspace/downstream/sat-dashboard/app'
+let g:netrw_dirhist_9='/home/ehelms/.vim'
