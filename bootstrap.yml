@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  tasks:
+    - name: 'Install packages'
+      become: yes
+      package:
+        name: "{{ item }}"
+        state: 'present'
+      with_items:
+        - git
+        - screen
+        - vim
+        - '@Development Tools'
+
+    - name: 'Create symlinks'
+      file:
+        state: link
+        src: "{{ playbook_dir }}/dotfiles/{{ item }}"
+        dest: "{{ lookup('env', 'HOME') }}/{{ item }}"
+      with_items:
+        - .bashrc
+        - .rdebugrc
+        - .screenrc
+        - .vimrc
+        - .pryrc
+        - .git-prompt.sh
+
+    - name: 'Create symlinks'
+      file:
+        state: link
+        src: "{{ playbook_dir }}/vim"
+        dest: "{{ lookup('env', 'HOME') }}/.vim"
+
+    - name: 'Config git user.name'
+      command: 'git config --global user.name "Eric D. Helms"'
+
+    - name: 'Config git user.email'
+      command: 'git config --global user.email ericdhelms@gmail.com'
