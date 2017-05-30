@@ -25,6 +25,8 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 alias koji-katello='koji -c ~/.koji/katello-config'
 alias koji-build='koji-katello build'
 
+export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
   #export TERM=xterm-256color
 #fi

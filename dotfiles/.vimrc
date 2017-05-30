@@ -7,6 +7,9 @@ syntax enable
 
 set tabstop=2
 set softtabstop=2
+set smarttab
+set expandtab
+set shiftwidth=2
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
