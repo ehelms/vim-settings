@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    remote: origin
+    branch: ''
+  tasks:
+    - debug:
+        msg: "{{ current_directory }}"
+
+    - name: 'Find current branch'
+      command: git rev-parse --abbrev-ref HEAD
+      register: current_branch
+      args:
+        chdir: "{{ current_directory }}"
+
+    - name: 'Fetch remote'
+      command: "git fetch {{ remote }}"
+      args:
+        chdir: "{{ current_directory }}"
+
+    - debug:
+        msg: "{{ branch or current_branch.stdout }}"
+
+    - name: 'Reset branch'
+      shell: "git reset {{ remote }}/{{ branch or current_branch.stdout }} --hard"
+      args:
+        chdir: "{{ current_directory }}"

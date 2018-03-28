@@ -25,6 +25,8 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 alias koji-katello='koji -c ~/.koji/katello-config'
 alias koji-build='koji-katello build'
 
+alias reset-branch='ansible-playbook ~/vim-settings/playbooks/reset-branch.yml -e current_directory=$PWD'
+
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
