@@ -17,6 +17,7 @@
         state: link
         src: "{{ playbook_dir }}/dotfiles/{{ item }}"
         dest: "{{ lookup('env', 'HOME') }}/{{ item }}"
+        force: yes
       with_items:
         - .bashrc
         - .rdebugrc
@@ -25,11 +26,17 @@
         - .pryrc
         - .git-prompt.sh
 
+    - name: 'Remove existing .vim directory'
+      file:
+        state: absent
+        path: "{{ lookup('env', 'HOME') }}/.vim"
+
     - name: 'Create symlinks'
       file:
         state: link
         src: "{{ playbook_dir }}/vim"
         dest: "{{ lookup('env', 'HOME') }}/.vim"
+        force: yes
 
     - name: 'Config git user.name'
       command: 'git config --global user.name "Eric D. Helms"'
