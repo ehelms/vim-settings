@@ -50,3 +50,18 @@
         name: 'url."git@github.com:".pushInsteadOf'
         value: 'https://github.com/'
         scope: system
+
+    - name: 'Fetch vim.plug'
+      command: "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+    - name: 'Install vim plugins'
+      shell: "vim +PlugInstall +qall"
+
+    - name: 'Create directory structure'
+      file:
+        state: directory
+        path: "{{ lookup('env', 'HOME') }}/{{ item }}"
+      with_items:
+        - workspace
+        - workspace/upstream
+        - workspace/downstream
