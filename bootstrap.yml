@@ -43,3 +43,10 @@
 
     - name: 'Config git user.email'
       command: 'git config --global user.email ericdhelms@gmail.com'
+
+    - name: 'Always push to github over ssh'
+      become: yes
+      git_config:
+        name: 'url."git@github.com:".pushInsteadOf'
+        value: 'https://github.com/'
+        scope: system
