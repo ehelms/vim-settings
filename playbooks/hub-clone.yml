@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - debug:
+        msg: "{{ current_directory }}"
+
+    - name: 'Clone git repository'
+      command: "git clone https://github.com/{{ repo }}"
+      args:
+        chdir: "{{ current_directory }}"
+
+    - name: 'Add my remote'
+      command: "git remote add ehelms git@github.com:ehelms/{{ repo.split('/')[1] }}"
+      args:
+        chdir: "{{ current_directory }}/{{ repo.split('/')[1] }}"

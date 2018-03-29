@@ -26,6 +26,8 @@ alias koji-katello='koji -c ~/.koji/katello-config'
 alias koji-build='koji-katello build'
 
 alias reset-branch='ansible-playbook ~/vim-settings/playbooks/reset-branch.yml -e current_directory=$PWD'
+alias hub-clone='ansible-playbook ~/vim-settings/playbooks/hub-clone.yml -e current_directory=$PWD'
+alias lab-clone='ansible-playbook ~/vim-settings/playbooks/lab-clone.yml --vault-password-file ~/vim-settings/playbooks/.vault_password -e current_directory=$PWD'
 
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 
