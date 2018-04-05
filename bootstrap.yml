@@ -12,6 +12,10 @@
         - vim
         - '@Development Tools'
         - krb5-workstation
+        - git-annex
+        - libxslt-devel
+        - libxml2-devel
+        - ruby-devel
 
     - name: 'Create symlinks'
       file:
