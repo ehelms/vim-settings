@@ -48,5 +48,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'leafgarland/typescript-vim'
 Plug 'tfnico/vim-gradle'
 Plug 'pearofducks/ansible-vim'
+Plug 'rodjek/vim-puppet'
 
 call plug#end()
