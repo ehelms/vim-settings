@@ -1,16 +1,7 @@
-set nocompatible               " no vi compatible mode
-
 " colorscheme vibrantink
 colorscheme badwolf
 
 syntax enable
-
-set tabstop=2
-set softtabstop=2
-set smarttab
-set expandtab
-set shiftwidth=2
-set paste
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
@@ -45,9 +36,16 @@ set tabpagemax=75
 " Plug plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'leafgarland/typescript-vim'
-Plug 'tfnico/vim-gradle'
-Plug 'pearofducks/ansible-vim'
-Plug 'rodjek/vim-puppet'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'pearofducks/ansible-vim'
+"Plug 'rodjek/vim-puppet'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+
+set tabstop=2
+set softtabstop=2
+set smarttab
+set expandtab
+set shiftwidth=2
+set paste

@@ -29,8 +29,13 @@ alias reset-branch='ansible-playbook ~/vim-settings/playbooks/reset-branch.yml -
 alias hub-clone='ansible-playbook ~/vim-settings/playbooks/hub-clone.yml -e current_directory=$PWD'
 alias lab-clone='ansible-playbook ~/vim-settings/playbooks/lab-clone.yml --vault-password-file ~/vim-settings/playbooks/.vault_password -e current_directory=$PWD'
 
+alias docker='podman'
+
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
   #export TERM=xterm-256color
 #fi
+
+# added by travis gem
+[ -f /home/ehelms/.travis/travis.sh ] && source /home/ehelms/.travis/travis.sh
