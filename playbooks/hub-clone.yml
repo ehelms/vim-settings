@@ -10,6 +10,12 @@
       args:
         chdir: "{{ current_directory }}"
 
+    - name: Add pr fetching
+      lineinfile:
+        path: "{{ current_directory }}/{{ repo.split('/')[1] }}/.git/config"
+        line: "  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*"
+        insertafter: "^.*fetch =.*"
+
     - name: 'Add my remote'
       command: "git remote add ehelms git@github.com:ehelms/{{ repo.split('/')[1] }}"
       args:

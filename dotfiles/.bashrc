@@ -29,7 +29,9 @@ alias reset-branch='ansible-playbook ~/vim-settings/playbooks/reset-branch.yml -
 alias hub-clone='ansible-playbook ~/vim-settings/playbooks/hub-clone.yml -e current_directory=$PWD'
 alias lab-clone='ansible-playbook ~/vim-settings/playbooks/lab-clone.yml --vault-password-file ~/vim-settings/playbooks/.vault_password -e current_directory=$PWD'
 
-alias docker='podman'
+alias obal-source='ANSIBLE_FORCE_COLOR=true PYTHONPATH=/home/ehelms/workspace/upstream/obal python3 -m obal'
+
+#alias docker='podman'
 
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 
