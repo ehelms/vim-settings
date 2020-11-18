@@ -6,6 +6,7 @@
       package:
         name: epel-release
         state: present
+      when: ansible_distribution_major_version == "7"
 
     - name: Setup centos-release-scl
       become: yes
@@ -13,10 +14,6 @@
         name: centos-release-scl
         state: present
       when: ansible_distribution_major_version == "7"
-
-    - name: Install puppet repo
-      become: yes
-      command: yum -y install http://yum.puppetlabs.com/puppet6-release-el-{{ ansible_distribution_major_version }}.noarch.rpm
 
     - name: 'Install packages'
       become: yes
@@ -32,7 +29,7 @@
         - libxslt-devel
         - libxml2-devel
         - wget
-        - puppet-agent
+        - git-annex
 
     - name: 'Install packages'
       become: yes
@@ -43,7 +40,6 @@
         - rh-ruby25
         - rh-ruby25-ruby-devel
         - rh-ruby25-rubygem-bundler
-        - git-annex
       when: ansible_distribution_major_version == "7"
 
     - name: 'Install packages'
@@ -87,6 +83,9 @@
 
     - name: 'Config git user.email'
       command: 'git config --global user.email ericdhelms@gmail.com'
+
+    - name: 'Set global git editor to vim'
+      command: 'git config --global core.editor "vim"'
 
     - name: 'Always push to github over ssh'
       become: yes

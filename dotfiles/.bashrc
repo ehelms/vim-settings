@@ -17,7 +17,7 @@ WHITE="\e[0;97m"
 
 PS1="\u@\h \W$YELLOW\$(__git_ps1)\[$WHITE\]\$ "
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:$HOME/.local/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 export VAGRANT_DEFAULT_PROVIDER=libvirt
@@ -34,6 +34,9 @@ alias obal-source='ANSIBLE_FORCE_COLOR=true PYTHONPATH=/home/ehelms/workspace/up
 #alias docker='podman'
 
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
+export EDITOR='vim'
+export PY_COLORS='1'
+export ANSIBLE_FORCE_COLOR='1'
 
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
   #export TERM=xterm-256color
