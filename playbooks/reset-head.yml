@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    remote: origin
+    branch: ''
+  tasks:
+    - debug:
+        msg: "{{ current_directory }}"
+
+    - name: 'Find current branch'
+      command: git reset HEAD --hard
+      args:
+        chdir: "{{ current_directory }}"
