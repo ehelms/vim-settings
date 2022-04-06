@@ -22,14 +22,13 @@
         state: 'present'
       with_items:
         - git
-        - screen
         - vim
         - '@Development Tools'
         - krb5-workstation
         - libxslt-devel
         - libxml2-devel
         - wget
-        - git-annex
+        - tig
 
     - name: 'Install packages'
       become: yes
@@ -37,9 +36,10 @@
         name: "{{ item }}"
         state: 'present'
       with_items:
-        - rh-ruby25
-        - rh-ruby25-ruby-devel
-        - rh-ruby25-rubygem-bundler
+        - git-annex
+        - rh-ruby27
+        - rh-ruby27-ruby-devel
+        - rh-ruby27-rubygem-bundler
       when: ansible_distribution_major_version == "7"
 
     - name: 'Install packages'
@@ -61,7 +61,6 @@
       with_items:
         - .bashrc
         - .rdebugrc
-        - .screenrc
         - .vimrc
         - .pryrc
         - .git-prompt.sh
