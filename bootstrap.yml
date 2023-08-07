@@ -1,20 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Setup epel
-      become: yes
-      package:
-        name: epel-release
-        state: present
-      when: ansible_distribution_major_version == "7"
-
-    - name: Setup centos-release-scl
-      become: yes
-      package:
-        name: centos-release-scl
-        state: present
-      when: ansible_distribution_major_version == "7"
-
     - name: 'Install packages'
       become: yes
       package:
@@ -28,7 +14,6 @@
         - libxslt-devel
         - libxml2-devel
         - wget
-        - tig
 
     - name: 'Install packages'
       become: yes
@@ -36,11 +21,8 @@
         name: "{{ item }}"
         state: 'present'
       with_items:
-        - git-annex
-        - rh-ruby27
-        - rh-ruby27-ruby-devel
-        - rh-ruby27-rubygem-bundler
-      when: ansible_distribution_major_version == "7"
+        - https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/t/tig-2.4.1-3.el8.x86_64.rpm
+      when: ansible_distribution_major_version == "8"
 
     - name: 'Install packages'
       become: yes
@@ -50,7 +32,6 @@
       with_items:
         - ruby-devel
         - rubygem-bundler
-      when: ansible_distribution_major_version == "8"
 
     - name: 'Create symlinks'
       file:
