@@ -2,3 +2,5 @@ vim/plugged
 vim/.netrwhist
 *.retry
 .vault_password
+*.swp
+*.swo

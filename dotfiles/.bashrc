@@ -32,26 +32,30 @@ alias lab-clone='ansible-playbook ~/vim-settings/playbooks/lab-clone.yml --vault
 
 alias obal-source='ANSIBLE_FORCE_COLOR=true PYTHONPATH=/home/ehelms/workspace/upstream/packaging/obal python3 -m obal'
 alias releasetool-source='ANSIBLE_FORCE_COLOR=true PYTHONPATH=/home/ehelms/workspace/upstream/releasetool python3 -m releasetool'
+alias vim='vim -p'
 
 alias beaker-test-el7='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=yes BEAKER_setfile=centos7-64{hostname=centos7-64.example.com} bundle exec rake beaker'
 alias beaker-test-el8='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=yes BEAKER_setfile=centos8-64{hostname=centos8-64.example.com} bundle exec rake beaker'
+alias beaker-test-el9='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=yes BEAKER_setfile=centos9-64{hostname=centos9-64.example.com} bundle exec rake beaker'
 alias beaker-test-debian10='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=yes BEAKER_setfile=debian10-64{hostname=debian10-64.example.com} bundle exec rake beaker'
 alias beaker-test-ubuntu18='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=yes BEAKER_setfile=ubuntu1804-64{hostname=ubuntu1804-64.example.com} bundle exec rake beaker'
 alias beaker-test-ubuntu20='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=yes BEAKER_setfile=ubuntu2004-64{hostname=ubuntu2004-64.example.com} bundle exec rake beaker'
 
 alias beaker-test-el7-nodestroy='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=no BEAKER_setfile=centos7-64{hostname=centos7-64.example.com} bundle exec rake beaker'
 alias beaker-test-el8-nodestroy='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=no BEAKER_setfile=centos8-64{hostname=centos8-64.example.com} bundle exec rake beaker'
+alias beaker-test-el9-nodestroy='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=no BEAKER_setfile=centos9-64{hostname=centos9-64.example.com} bundle exec rake beaker'
 alias beaker-test-debian10-nodestroy='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=no BEAKER_setfile=debian10-64{hostname=debian10-64.example.com} bundle exec rake beaker'
 alias beaker-test-ubuntu18-nodestroy='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=no BEAKER_setfile=ubuntu1804-64{hostname=ubuntu1804-64.example.com} bundle exec rake beaker'
 alias beaker-test-ubuntu20-nodestroy='BEAKER_HYPERVISOR=docker BEAKER_provision=yes BEAKER_destroy=no BEAKER_setfile=ubuntu2004-64{hostname=ubuntu2004-64.example.com} bundle exec rake beaker'
 
-alias cleanup-docker='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias cleanup-podman='podman stop $(podman ps -a -q) && podman rm $(podman ps -a -q)'
 
 export RUBYOPT="-W0"
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 export EDITOR='vim'
 export PY_COLORS='1'
 export ANSIBLE_FORCE_COLOR='1'
+export BROKER_DIRECTORY=/home/ehelms/.config/broker
 
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
   #export TERM=xterm-256color
