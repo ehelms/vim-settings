@@ -1,7 +1,6 @@
 #!/bin/bash
 
-yum -y install centos-release-ansible-29
-yum -y install ansible
+dnf -y install ansible-core
 
 ansible-galaxy collection install community.general
 ansible-playbook bootstrap.yml
