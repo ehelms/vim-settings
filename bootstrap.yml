@@ -6,11 +6,11 @@
       package:
         name: "{{ item }}"
         state: 'present'
+        disable_plugin: foreman-protector
       with_items:
         - git
         - vim
         - '@Development Tools'
-        - krb5-workstation
         - libxslt-devel
         - libxml2-devel
         - wget
@@ -30,6 +30,7 @@
       package:
         name: "{{ item }}"
         state: 'present'
+        disable_plugin: foreman-protector
       with_items:
         - ruby-devel
         - rubygem-bundler
