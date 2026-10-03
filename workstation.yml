@@ -1,12 +1,57 @@
 ---
 - hosts: localhost
+  become: yes
   tasks:
-    - name: 'Install packages'
-      become: yes
-      package:
-        name: "{{ item }}"
-        state: 'present'
-      with_items:
-        - koji
-        - tito
-        - vagrant
+    - name: Install workstation packages
+      ansible.builtin.package:
+        name:
+          - ansible-core
+          - curl
+          - gcc
+          - git
+          - golang
+          - libvirt
+          - libvirt-daemon-config-network
+          - libvirt-devel
+          - make
+          - nodejs
+          - npm
+          - pkgconf-pkg-config
+          - pipx
+          - python3
+          - python3-pip
+          - ruby
+          - rubygems
+          - tito
+          - koji
+          - vagrant
+          - vim-enhanced
+        state: present
+
+    - name: Install Pi coding agent
+      become: false
+      ansible.builtin.command:
+        cmd: npm install --global @earendil-works/pi-coding-agent
+      environment:
+        NPM_CONFIG_PREFIX: "{{ lookup('env', 'HOME') }}/.npm-global"
+      args:
+        creates: "{{ lookup('env', 'HOME') }}/.npm-global/bin/pi"
+
+    - name: Install Broker
+      become: false
+      ansible.builtin.command:
+        cmd: pipx install broker
+      args:
+        creates: "{{ lookup('env', 'HOME') }}/.local/bin/broker"
+
+    - name: Check installed Vagrant plugins
+      become: false
+      ansible.builtin.command: vagrant plugin list
+      register: vagrant_plugins
+      changed_when: false
+      failed_when: false
+
+    - name: Install vagrant-libvirt
+      become: false
+      ansible.builtin.command: vagrant plugin install vagrant-libvirt
+      when: "'vagrant-libvirt' not in vagrant_plugins.stdout"
