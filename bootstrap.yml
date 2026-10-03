@@ -1,40 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-    - name: 'Install packages'
-      become: yes
-      package:
-        name: "{{ item }}"
-        state: 'present'
-        disable_plugin: foreman-protector
-      with_items:
-        - git
-        - vim
-        - '@Development Tools'
-        - libxslt-devel
-        - libxml2-devel
-        - wget
-
-    - name: 'Install packages'
-      become: yes
-      package:
-        name: "{{ item }}"
-        state: 'present'
-        disable_gpg_check: true
-      with_items:
-        - https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/t/tig-2.4.1-3.el8.x86_64.rpm
-      when: ansible_distribution_major_version == "8"
-
-    - name: 'Install packages'
-      become: yes
-      package:
-        name: "{{ item }}"
-        state: 'present'
-        disable_plugin: foreman-protector
-      with_items:
-        - ruby-devel
-        - rubygem-bundler
-
     - name: 'Create symlinks'
       file:
         state: link
@@ -81,12 +47,3 @@
 
     - name: 'Install vim plugins'
       shell: "vim +PlugInstall +qall"
-
-    - name: 'Create directory structure'
-      file:
-        state: directory
-        path: "{{ lookup('env', 'HOME') }}/{{ item }}"
-      with_items:
-        - workspace
-        - workspace/upstream
-        - workspace/downstream

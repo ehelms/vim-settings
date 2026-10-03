@@ -58,18 +58,39 @@ alias restart-sound='systemctl --user restart wireplumber pipewire pipewire-puls
 
 alias broker-inv="broker inventory --curated"
 
+alias git-amend="git commit --amend"
+
 export RUBYOPT="-W0"
 export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 export EDITOR='vim'
 export PY_COLORS='1'
 export ANSIBLE_FORCE_COLOR='1'
 export BROKER_DIRECTORY=/home/ehelms/.config/broker
+export PATH="$HOME/go/bin:$PATH"
 
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
   #export TERM=xterm-256color
 #fi
 
-. ~/.secrets
-export PATH="$HOME/go/bin:$PATH"
-export PATH=$PATH:$HOME/.npm-global/bin
-export BASIC_MEMORY_PATH=~/.claude
+set -a
+source ~/.secrets
+set +a
+
+# Pi
+export PATH="/home/ehelms/.npm-global/bin:$PATH"
+
+pi-think() {
+  pi \
+    --provider openai \
+    --model gpt-6-luna \
+    --thinking max \
+    "$@"
+}
+
+pi-code() {
+  pi \
+    --provider openai \
+    --model gpt-5.6-luna \
+    --thinking high \
+    "$@"
+}
