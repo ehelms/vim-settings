@@ -61,12 +61,13 @@ alias broker-inv="broker inventory --curated"
 alias git-amend="git commit --amend"
 
 export RUBYOPT="-W0"
-export REQUESTS_CA_BUNDLE=/etc/pki/tls/certs/ca-bundle.crt
 export EDITOR='vim'
 export PY_COLORS='1'
 export ANSIBLE_FORCE_COLOR='1'
 export BROKER_DIRECTORY=/home/ehelms/.config/broker
 export PATH="$HOME/go/bin:$PATH"
+
+unset REQUESTS_CA_BUNDLE
 
 #if [ "$COLORTERM" == "gnome-terminal" ]; then
   #export TERM=xterm-256color
@@ -75,9 +76,6 @@ export PATH="$HOME/go/bin:$PATH"
 set -a
 source ~/.secrets
 set +a
-
-# Pi
-export PATH="/home/ehelms/.npm-global/bin:$PATH"
 
 pi-think() {
   pi \
