@@ -26,6 +26,18 @@
         dest: "{{ lookup('env', 'HOME') }}/.vim"
         force: yes
 
+    - name: 'Create Pi extensions directory'
+      file:
+        state: directory
+        path: "{{ lookup('env', 'HOME') }}/.pi/agent/extensions"
+
+    - name: 'Link Pi plans extension'
+      file:
+        state: link
+        src: "{{ playbook_dir }}/pi/extensions/plans.ts"
+        dest: "{{ lookup('env', 'HOME') }}/.pi/agent/extensions/plans.ts"
+        force: yes
+
     - name: 'Config git user.name'
       command: 'git config --global user.name "Eric D. Helms"'
 

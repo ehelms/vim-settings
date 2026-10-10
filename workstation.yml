@@ -30,12 +30,10 @@
 
     - name: Install Pi coding agent
       become: false
-      ansible.builtin.command:
-        cmd: npm install --global @earendil-works/pi-coding-agent
-      environment:
-        NPM_CONFIG_PREFIX: "{{ lookup('env', 'HOME') }}/.npm-global"
+      ansible.builtin.shell:
+        cmd: curl -fsSL https://pi.dev/install.sh | sh
       args:
-        creates: "{{ lookup('env', 'HOME') }}/.npm-global/bin/pi"
+        creates: "{{ lookup('env', 'HOME') }}/.local/bin/pi"
 
     - name: Install Broker
       become: false
